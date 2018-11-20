@@ -37,6 +37,8 @@ AutoProv: no
 %filter_requires_in /usr/share/doc/vmware-viperl
 %filter_from_provides /perl(/d
 %filter_from_requires /perl(VMware/d; /perl(WSMan/d
+# TODO: temporary - needs manual install for now
+%filter_from_requires /perl(UUID)/d
 %filter_setup
 }
 

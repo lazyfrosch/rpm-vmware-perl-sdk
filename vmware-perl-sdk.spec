@@ -28,6 +28,8 @@ Requires:       perl(LWP)
 Requires:       perl(SOAP::Lite)
 Requires:       perl(XML::LibXML)
 
+AutoProv: no
+
 %description
 VMware vSphere Perl SDK
 

@@ -44,6 +44,9 @@ perl Makefile.PL INSTALLDIRS=vendor
 %install
 make install DESTDIR="%{buildroot}"
 
+rm -f %{buildroot}%{_libdir}/perl5/perllocal.pod
+rm -f %{buildroot}%{_libdir}/perl5/vendor_perl/auto/VIPerlToolkit/.packlist
+
 %pre
 # TODO:
 

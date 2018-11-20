@@ -50,7 +50,17 @@ rm -f %{buildroot}%{_libdir}/perl5/perllocal.pod
 rm -f %{buildroot}%{_libdir}/perl5/vendor_perl/auto/VIPerlToolkit/.packlist
 
 %pre
-# TODO:
+uninstaller=/usr/bin/vmware-uninstall-vSphere-CLI.pl
+
+if [ -f "$uninstaller" ]; then
+  (
+    echo "The original uninstaller $uninstaller is present!"
+    echo
+    echo "Please make sure to remove an old installation by using the uninstaller,"
+    echo "or at least remove the script from the system"
+  ) >&2
+  exit 1
+fi
 
 %files
 %defattr(-,root,root,-)

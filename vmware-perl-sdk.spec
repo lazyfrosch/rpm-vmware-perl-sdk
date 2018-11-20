@@ -22,13 +22,23 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl(ExtUtils::MakeMaker)
 
-Requires:       perl(Archive::ZIP)
+Requires:       perl(Archive::Zip)
 Requires:       perl(Crypt::SSLeay)
 Requires:       perl(LWP)
 Requires:       perl(SOAP::Lite)
 Requires:       perl(XML::LibXML)
 
 AutoProv: no
+%{?perl_default_filter}
+%{?filter_setup:
+%filter_provides_in /usr/lib/vmware-viperl
+%filter_provides_in /usr/share/doc/vmware-viperl
+%filter_requires_in /usr/lib/vmware-viperl
+%filter_requires_in /usr/share/doc/vmware-viperl
+%filter_from_provides /perl(/d
+%filter_from_requires /perl(VMware/d; /perl(WSMan/d
+%filter_setup
+}
 
 %description
 VMware vSphere Perl SDK

@@ -1,0 +1,20 @@
+Description: Exclude vmware-install.pl from MakeMaker installation
+Author: Markus Frosch <markus.frosch@icinga.com>
+Last-Update: 2018-07-10
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -64,6 +64,12 @@
+   }
+ }, 'lib';
+ 
++sub MY::libscan {
++    my( $mm, $file ) = @_;
++    return if $file =~  /^vmware-install.pl$/; # SKIP
++    return $file;
++}
++
+ WriteMakefile(
+    NAME               => 'VIPerlToolkit',
+    VERSION_FROM       => 'lib/VMware/share/VMware/VIRuntime.pm',

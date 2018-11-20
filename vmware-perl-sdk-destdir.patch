@@ -1,0 +1,21 @@
+Description: Fix DESTDIR installation for extra scripts
+Author: Markus Frosch <markus.frosch@icinga.com>
+Last-Update: 2018-07-10
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -109,11 +109,11 @@
+ 
+ install_vmware_apps :
+ 	$(NOECHO) $(MOD_INSTALL) \
+-		$(INST_VMWARE_APPS) $(DEST_VMWARE_APPS)
++		$(INST_VMWARE_APPS) $(DESTDIR)$(DEST_VMWARE_APPS)
+ 
+ install_vmware_doc :
+ 	$(NOECHO) $(MOD_INSTALL) \
+-		$(INST_VMWARE_DOC) $(DEST_VMWARE_DOC)
++		$(INST_VMWARE_DOC) $(DESTDIR)$(DEST_VMWARE_DOC)
+ 
+ clean ::
+ 	$(RM_RF) VMware WSMan

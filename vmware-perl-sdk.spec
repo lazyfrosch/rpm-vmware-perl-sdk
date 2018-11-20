@@ -58,6 +58,8 @@ perl Makefile.PL INSTALLDIRS=vendor
 %install
 make install DESTDIR="%{buildroot}"
 
+find %{buildroot}/usr/share/perl5/vendor_perl -type f -name "*.pm" -executable -exec chmod -x {} \;
+
 rm -f %{buildroot}%{_libdir}/perl5/perllocal.pod
 rm -f %{buildroot}%{_libdir}/perl5/vendor_perl/auto/VIPerlToolkit/.packlist
 
